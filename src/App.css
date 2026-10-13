@@ -1,0 +1,339 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* cards css  */
+
+/* Deep Rich Radial Maroon Vignette */
+.bg-card-vignette {
+  background: radial-gradient(
+    circle at 48% 46%,
+    #791823 0%,
+    #4e0d14 42%,
+    #2d060a 82%,
+    #190306 100%
+  );
+}
+
+/* Shimmer Foil Reflection */
+.foil-shimmer {
+  position: absolute;
+  inset: -100%;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255, 235, 170, 0.03) 40%,
+    rgba(255, 248, 220, 0.28) 47%,
+    rgba(255, 223, 130, 0.45) 50%,
+    rgba(255, 248, 220, 0.28) 53%,
+    rgba(255, 235, 170, 0.03) 60%,
+    transparent 75%
+  );
+  transform: translateX(-100%) rotate(25deg);
+  pointer-events: none;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wedding-card-container:hover .foil-shimmer {
+  transform: translateX(100%) rotate(25deg);
+  transition-duration: 2.2s;
+}
+
+/* Metallic Gold Text */
+.gold-foil-text {
+  background: linear-gradient(
+    135deg,
+    #f9ebb2 0%,
+    #e8c374 25%,
+    #cf9f45 50%,
+    #fef5cc 75%,
+    #cca044 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(225, 183, 91, 0.2);
+}
+
+.gold-foil-line {
+  background: linear-gradient(
+    90deg,
+    rgba(207, 158, 56, 0) 0%,
+    rgba(240, 210, 140, 0.85) 50%,
+    rgba(207, 158, 56, 0) 100%
+  );
+}
+
+/* 3D Card Perspective */
+.perspective-container {
+  perspective: 1400px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Botanical Decorations */
+.metallic-gold-stroke {
+  stroke: #deb352;
+  filter:
+    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4))
+    drop-shadow(0 0 2px rgba(238, 205, 130, 0.45));
+}
+
+.metallic-gold-fill {
+  fill: #deb352;
+  filter: drop-shadow(0 0 2px rgba(238, 205, 130, 0.4));
+}
+
+.white-petal-glow {
+  filter:
+    drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 0 15px rgba(255, 245, 230, 0.25));
+}
+
+/* Gold Particle Canvas */
+#particleCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* RSVP Modal */
+.rsvp-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  transition: opacity 300ms ease;
+}
+
+.rsvp-modal.is-closed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rsvp-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 60;
+  transition:
+    transform 300ms ease,
+    opacity 300ms ease;
+}
+
+.toast-notification.is-hidden {
+  transform: translateY(5rem);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Respect device motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .foil-shimmer,
+  .rsvp-modal,
+  .toast-notification {
+    transition-duration: 0.01ms;
+  }
+}
+
+
+
+
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
